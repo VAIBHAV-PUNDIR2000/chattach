@@ -1,0 +1,40 @@
+.ChatMessage-text{
+    font-size:1rem;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    word-spacing: 0.5rem; 
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    
+    
+    
+}
+
+.ChatMessage{
+width: 60%;
+ margin: 1.5rem;
+ padding: 1rem;
+ display: flex;
+ flex-direction: column;
+ border-radius: 8px;
+
+}
+.ChatMessage-Person{
+    width: 100%;
+    font-variant: small-caps;
+    display: flex;
+    font-size: x-large;
+    font: 400 ;
+    }
+
+.ChatMessage-date{
+    font-size: small;
+    color: gray;
+    justify-content: flex-end;
+    display: flex;    ;
+    align-items: flex-end;
+
+    float:right;
+}

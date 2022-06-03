@@ -1,0 +1,50 @@
+.main{
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.sidepane{
+    overflow-y: scroll;
+    height: 93vh;
+    width: 40vw;
+    background-color: #212529;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.chat{
+background-color: #e9ecef;
+width: 100%;
+padding:3rem;
+overflow-y: scroll;
+height: 100vh;
+}
+
+.right-pane{
+    display: flex;
+    flex-direction: column;
+    height:93vh;
+}
+
+.sidepane::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sidepane {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+.chat::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .chat {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  

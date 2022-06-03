@@ -1,0 +1,51 @@
+.outer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+  
+    margin-top:7px;
+    padding:5px;
+   
+    background-color: #212529;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+
+
+}
+
+
+
+.profile-name-header{
+    font-size: xx-large;
+    font-weight: 400;
+    color: white;
+    margin-left:10px;
+    padding:1rem;
+    user-select: none;
+    font-variant: small-caps;
+
+}
+
+.profile-pic-header{
+    margin-left: 1rem;
+    border-radius:50%;
+    width: 6em;
+    height: 6rem;
+    user-select: none;
+    cursor: pointer;
+
+}
+
+.right{
+
+    display:flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: right;
+
+    
+    
+}
+
