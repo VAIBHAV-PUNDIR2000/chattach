@@ -8,6 +8,7 @@ export const createDoc = (name, id, email, dob, error, seterror) => {
       id: id,
       born: dob,
       email: email,
+      chats: [],
     });
     console.log("Document written with ID: ", docRef.id);
     return docRef;

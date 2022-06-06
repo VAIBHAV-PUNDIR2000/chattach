@@ -6,8 +6,10 @@ export const signUp = (email, password, error, seterror, name, dob) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
-      createDoc(name, user.uid, email, dob, error, seterror);
+
+      const user = auth.currentUser.uid;
+      createDoc(name, user, email, dob, error, seterror);
+
       // ...
     })
     .catch((er) => {

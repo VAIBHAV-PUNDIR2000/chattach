@@ -5,18 +5,23 @@ import Chat from "../../Components/Chat/Chat";
 import "./style.css";
 import MessageBar from "../../Components/MessageBar/MessageBar";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
+import { useContext } from "react";
+import { userContext } from "../../store/usercontext";
 const HomePage = () => {
+  const { userData, setUserData, userId } = useContext(userContext);
+  console.log({ userId });
   return (
     <div className="main">
       <div className="sidepane">
         <ChatSearchUI />
-        <PeopleTabUI name="sth" id={1} />
-        <PeopleTabUI name="Tanya" id={2} />
-        <PeopleTabUI name="sam" id={3} />
-        <PeopleTabUI name="dam" id={4} />
-        <PeopleTabUI name="ham" id={5} />
-        <PeopleTabUI name="kam" id={6} />
-        <PeopleTabUI name="Vaibhav" id={7} />
+        {userData.map((item) => {
+          console.log(item.name);
+          if (item.id != userId) {
+            console.log(userId + " =>" + item.id);
+
+            return <PeopleTabUI name={item.name} id={item.id} />;
+          }
+        })}
       </div>
       <div className="right-pane">
         <ChatHeader />

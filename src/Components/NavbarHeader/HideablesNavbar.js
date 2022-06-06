@@ -2,13 +2,17 @@ import React from "react";
 import {
   Nav,
   FormControl,
-  Form,
   NavDropdown,
+  Form,
   Button,
   Navbar,
 } from "react-bootstrap";
 import { signout } from "../../firebase/signout";
+import { userContext } from "../../store/usercontext";
+import { useContext } from "react";
 const HideablesNavbar = () => {
+  const { userData, userId } = useContext(userContext);
+  console.log(userData);
   return (
     <div
       style={{
@@ -24,7 +28,11 @@ const HideablesNavbar = () => {
           style={{ maxHeight: "100px" }}
           navbarScroll
         >
-          <Nav.Link href="#action1">Home</Nav.Link>
+          <Nav.Link>
+            {userData.map((o) => {
+              if (o.id == userId) return o.name;
+            })}
+          </Nav.Link>
           <NavDropdown title="Settings " id="navbarScrollingDropdown">
             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
