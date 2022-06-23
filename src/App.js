@@ -61,6 +61,7 @@ const App = () => {
             path="/signup"
             element={isUserLogged ? <HomePage /> : <SingupPageUI />}
           />
+          <Route path="*" element={<p>error 404 not found</p>} />
         </Routes>
       </Router>
     </userContext.Provider>

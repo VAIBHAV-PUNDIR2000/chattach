@@ -18,3 +18,7 @@ export const createDoc = (name, id, email, dob, error, seterror) => {
   }
   return;
 };
+
+export const createChat=(recieverUID,message)=>{
+  
+}
