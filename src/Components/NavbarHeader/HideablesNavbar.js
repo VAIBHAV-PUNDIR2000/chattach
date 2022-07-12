@@ -12,7 +12,7 @@ import { userContext } from "../../store/usercontext";
 import { useContext } from "react";
 const HideablesNavbar = () => {
   const { userData, userId } = useContext(userContext);
-  console.log(userData);
+  // console.log(userData);
   return (
     <div
       style={{

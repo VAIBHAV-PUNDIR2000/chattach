@@ -7,19 +7,33 @@ import MessageBar from "../../Components/MessageBar/MessageBar";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import { useContext } from "react";
 import { userContext } from "../../store/usercontext";
+
 const HomePage = () => {
-  const { userData, setUserData, userId } = useContext(userContext);
-  console.log({ userId });
+  const {
+    userData,
+    setUserData,
+    userId,
+    currentChatTabUser,
+    setCurrentChatTabUser,
+  } = useContext(userContext);
+  // console.log({ userId });
   return (
     <div className="main">
       <div className="sidepane">
         <ChatSearchUI />
         {userData.map((item) => {
-          console.log(item.name);
+          // console.log(item.name);
           if (item.id != userId) {
-            console.log(userId + " =>" + item.id);
+            // console.log(userId + " =>" + item.id);
 
-            return <PeopleTabUI name={item.name} id={item.id} />;
+            return (
+              <PeopleTabUI
+                name={item.name}
+                id={item.id}
+                key={item.id}
+                img={`http://source.unsplash.com/random/${item.id}`}
+              />
+            );
           }
         })}
       </div>

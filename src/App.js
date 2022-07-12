@@ -14,6 +14,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState([]);
   const [userId, setUserId] = useState("");
+  const [currentChatTabUser, setCurrentChatTabUser] = useState();
 
   const auth = getAuth(app);
   // console.log({ userData });
@@ -39,6 +40,7 @@ const App = () => {
           setUserData(...userData, ar);
         };
         call();
+
         // console.log("herein");
       } else {
         setIsUserLogged(false);
@@ -49,7 +51,15 @@ const App = () => {
 
   if (isLoading) return <Loader />;
   return (
-    <userContext.Provider value={{ userData, setUserData, userId }}>
+    <userContext.Provider
+      value={{
+        userData,
+        setUserData,
+        userId,
+        currentChatTabUser,
+        setCurrentChatTabUser,
+      }}
+    >
       <Router>
         <NavbarHeader isUserLogged={isUserLogged} />
         <Routes>

@@ -64,6 +64,6 @@ button{
 
 
 .send-button-icon:hover{
-    transform: rotate(-40deg);
-    transition: transform 500ms  ease-in-out; ;
+    transform: rotate(-30deg);
+    transition: transform 0.1s  ease-in-out; 
 }

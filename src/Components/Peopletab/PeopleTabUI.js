@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
+import { userContext } from "../../store/usercontext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getActiveElement } from "@testing-library/user-event/dist/utils";
+
 const PeopleTabUI = (prop) => {
   const { name, img, id } = prop;
   console.log(prop);
+  const { setCurrentChatTabUser, currentChatTabUser } = useContext(userContext);
+  // console.log({ setCurrentChatTabUser, currentChatTabUser });
   return (
-    <div className="single-tab-ui">
-      <img
-        className="profile-pic"
-        src={`http://source.unsplash.com/random/${id}`}
-      ></img>
-      <div className="profile-name">{name}</div>
+    <div
+      style={
+        currentChatTabUser?.id === id
+          ? {
+              backgroundColor: "#000",
+            }
+          : {}
+      }
+      className="single-tab-ui"
+      onClick={() => {
+        setCurrentChatTabUser({
+          ...currentChatTabUser,
+          id: id,
+          name: name,
+          img: img,
+        });
+      }}
+    >
+      <img className="profile-pic" src={img}></img>
+      <div className="profile-name">{name} </div>
     </div>
   );
 };

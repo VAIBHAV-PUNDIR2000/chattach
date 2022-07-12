@@ -15,13 +15,17 @@
 
     
 }
+
+.single-tab-ui:hover{
+    transform: scale(1.04);
+    transition-property: transform;  
+    transition-duration :  400ms;
+}
 *{
 user-select: none;
 }
+
 .single-tab-ui:active{
-    background-color: rgb(25, 24, 24);
-}
-.single-tab-ui.active{
     background-color: rgb(25, 24, 24);
 }
 
