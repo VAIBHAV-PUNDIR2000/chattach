@@ -7,6 +7,7 @@ import MessageBar from "../../Components/MessageBar/MessageBar";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import { useContext } from "react";
 import { userContext } from "../../store/usercontext";
+import { AiOutlineUserAdd } from "react-icons/ai";
 
 const HomePage = () => {
   const {
@@ -36,6 +37,12 @@ const HomePage = () => {
             );
           }
         })}
+
+        <div className="outer-floating-button">
+          <button className="floating-button ">
+            <AiOutlineUserAdd size={28} />
+          </button>
+        </div>
       </div>
       <div className="right-pane">
         <ChatHeader />
