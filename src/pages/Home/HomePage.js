@@ -8,7 +8,7 @@ import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import { useContext } from "react";
 import { userContext } from "../../store/usercontext";
 import { AiOutlineUserAdd } from "react-icons/ai";
-
+import AddChatModal from "../../Components/AddChatModal/AddChatModal";
 const HomePage = () => {
   const {
     userData,
@@ -18,6 +18,12 @@ const HomePage = () => {
     setCurrentChatTabUser,
   } = useContext(userContext);
   // console.log({ userId });
+
+  // return (
+  //   <div>
+  //     h<AddChatModal />
+  //   </div>
+  // );
   return (
     <div className="main">
       <div className="sidepane">
