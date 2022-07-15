@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PeopleTabUI from "../../Components/Peopletab/PeopleTabUI";
 import ChatSearchUI from "../../Components/ChatSearch/ChatSearchUI";
 import Chat from "../../Components/Chat/Chat";
@@ -10,6 +10,7 @@ import { userContext } from "../../store/usercontext";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import AddChatModal from "../../Components/AddChatModal/AddChatModal";
 const HomePage = () => {
+  const [showModal, setShowModal] = useState(false);
   const {
     userData,
     setUserData,
@@ -19,13 +20,9 @@ const HomePage = () => {
   } = useContext(userContext);
   // console.log({ userId });
 
-  // return (
-  //   <div>
-  //     h<AddChatModal />
-  //   </div>
-  // );
   return (
     <div className="main">
+      {showModal && <AddChatModal setShowModal={setShowModal} />}
       <div className="sidepane">
         <ChatSearchUI />
         {userData.map((item) => {
@@ -45,7 +42,10 @@ const HomePage = () => {
         })}
 
         <div className="outer-floating-button">
-          <button className="floating-button ">
+          <button
+            className="floating-button "
+            onClick={() => setShowModal(true)}
+          >
             <AiOutlineUserAdd size={28} />
           </button>
         </div>
