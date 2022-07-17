@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
 import "./AddChatModal.css";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineUserAdd } from "react-icons/ai";
 import PeopleTabUI from "../Peopletab/PeopleTabUI";
 import { userContext } from "../../store/usercontext";
 import Loader from "react-spinners/BarLoader";
+import { useState } from "react";
 
 const AddChatModal = ({ setShowModal }) => {
   const {
     userData,
-    setUserData,
+
     userId,
-    currentChatTabUser,
-    setCurrentChatTabUser,
   } = useContext(userContext);
+
+  const [searchText, setSearchText] = useState("");
+  const [chatToCreate, setChatToCreate] = useState();
+  console.log(chatToCreate);
   return (
     <div className="wholeWindow">
       <div className="inner-modal">
@@ -24,11 +27,17 @@ const AddChatModal = ({ setShowModal }) => {
             position: "sticky",
             top: "3px",
             justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "10px",
+
+            alignItems: "flex-start",
           }}
         >
-          <input className="input-search" placeholder="Search Users..." />
+          <input
+            className="input-search"
+            placeholder="Search Users..."
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
           <AiOutlineClose
             color="white"
             enableBackground={30}
@@ -44,7 +53,12 @@ const AddChatModal = ({ setShowModal }) => {
         {userData ? (
           userData.map((item) => {
             // console.log(item.name);
-            if (item.id != userId) {
+            if (
+              item.id !== userId &&
+              item.name
+                .toLowerCase()
+                .indexOf(searchText.toLocaleLowerCase()) !== -1
+            ) {
               // console.log(userId + " =>" + item.id);
 
               return (
@@ -52,18 +66,28 @@ const AddChatModal = ({ setShowModal }) => {
                   name={item.name}
                   id={item.id}
                   key={item.id}
+                  onClick={() =>
+                    setChatToCreate(...chatToCreate, {
+                      name: item.name,
+                      id: item.id,
+                    })
+                  }
                   forModal
                   img={`http://source.unsplash.com/random/${item.id}`}
                 />
               );
             }
+            return <></>;
           })
         ) : (
           <Loader />
         )}
 
         <div className="make-chat">
-          <button className="make-chat-button">Create </button>
+          <button className="make-chat-button">
+            <AiOutlineUserAdd style={{ marginRight: "1rem" }} />
+            <> Create Chat with user</>
+          </button>
         </div>
       </div>
     </div>
