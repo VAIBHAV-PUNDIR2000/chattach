@@ -11,6 +11,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import AddChatModal from "../../Components/AddChatModal/AddChatModal";
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const {
     userData,
     setUserData,
@@ -24,10 +25,13 @@ const HomePage = () => {
     <div className="main">
       {showModal && <AddChatModal setShowModal={setShowModal} />}
       <div className="sidepane">
-        <ChatSearchUI />
+        <ChatSearchUI setSearchText={setSearchText} />
         {userData.map((item) => {
           // console.log(item.name);
-          if (item.id != userId) {
+          if (
+            item.id != userId &&
+            item.name.toLowerCase().indexOf(searchText) != -1
+          ) {
             // console.log(userId + " =>" + item.id);
 
             return (

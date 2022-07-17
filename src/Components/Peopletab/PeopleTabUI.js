@@ -33,13 +33,7 @@ const PeopleTabUI = (prop) => {
       }}
     >
       {
-        <React.Fragment
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <React.Fragment>
           {loading ? <Loader /> : ""}
 
           <div style={{ display: loading ? "none" : "block" }}>
@@ -53,6 +47,7 @@ const PeopleTabUI = (prop) => {
           </div>
         </React.Fragment>
       }
+
       <div className="profile-name">{name} </div>
     </div>
   );
