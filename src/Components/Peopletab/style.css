@@ -11,7 +11,9 @@
     align-items: center;
     border-bottom:0.2px solid gray;
     
-    user-select: none;
+    user-select: none;  transform: scale(1.0);
+    transition-property: transform;  
+    transition-duration :  200ms;
 
     
 }

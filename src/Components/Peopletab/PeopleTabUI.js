@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "react-spinners/PuffLoader";
 
 const PeopleTabUI = (prop) => {
-  const { name, img, id, forModal } = prop;
+  const { name, img, id, forModal, chatToCreate, setChatToCreate } = prop;
   const [loading, setLoading] = useState(true);
   // console.log({ loading });
   const { setCurrentChatTabUser, currentChatTabUser } = useContext(userContext);
@@ -13,7 +13,8 @@ const PeopleTabUI = (prop) => {
   return (
     <div
       style={
-        currentChatTabUser?.id === id && !forModal
+        (currentChatTabUser?.id === id && !forModal) ||
+        (chatToCreate?.id === id && forModal)
           ? {
               backgroundColor: "#000",
             }
@@ -29,6 +30,7 @@ const PeopleTabUI = (prop) => {
             img: img,
           });
         } else {
+          setChatToCreate({ name: name, id: id, img: img });
         }
       }}
     >

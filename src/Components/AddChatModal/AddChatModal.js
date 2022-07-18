@@ -5,6 +5,7 @@ import PeopleTabUI from "../Peopletab/PeopleTabUI";
 import { userContext } from "../../store/usercontext";
 import Loader from "react-spinners/BarLoader";
 import { useState } from "react";
+import { createChat } from "../../firebasefunctions/createChat";
 
 const AddChatModal = ({ setShowModal }) => {
   const {
@@ -15,7 +16,7 @@ const AddChatModal = ({ setShowModal }) => {
 
   const [searchText, setSearchText] = useState("");
   const [chatToCreate, setChatToCreate] = useState();
-  console.log(chatToCreate);
+  console.log(chatToCreate, "here");
   return (
     <div className="wholeWindow">
       <div className="inner-modal">
@@ -64,6 +65,8 @@ const AddChatModal = ({ setShowModal }) => {
               return (
                 <PeopleTabUI
                   name={item.name}
+                  chatToCreate={chatToCreate}
+                  setChatToCreate={setChatToCreate}
                   id={item.id}
                   key={item.id}
                   onClick={() =>
@@ -84,9 +87,14 @@ const AddChatModal = ({ setShowModal }) => {
         )}
 
         <div className="make-chat">
-          <button className="make-chat-button">
+          <button
+            className="make-chat-button"
+            onClick={() => {
+              createChat(userId, chatToCreate.id);
+            }}
+          >
             <AiOutlineUserAdd style={{ marginRight: "1rem" }} />
-            <> Create Chat with user</>
+            <> Create Chat with {chatToCreate ? chatToCreate.name : "User"}</>
           </button>
         </div>
       </div>
